@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo/widgets/task.dart';
@@ -16,50 +18,51 @@ class _MyHomePageState extends State<MyHomePage> {
   final _editController = TextEditingController();
 
   final ScrollController _scrollController = ScrollController();
-  List tasks = [
-    
-  ];
+  List tasks = [];
 
   @override
   void initState() {
     super.initState();
-    
+
     initializeData();
   }
 
-  
-
   void initializeData() async {
     var prefs = await SharedPreferences.getInstance();
-    await prefs.setString('data', 'fdsddcvf');
-    var data =  prefs.getString('data') ?? 'asqww';
-   
-      tasks[0] = [data, false];
-  
-  }
+    // await prefs.remove('data');
+    var data = prefs.getString('data');
 
-  void toggle(int index) {
     setState(() {
-      tasks[index][1] = !tasks[index][1];
+      if (data != null) {
+        tasks = jsonDecode(data);
+      }
     });
   }
 
-  void updateOrder(int oldIndex, int newIndex) {
+  Future updateStorage() async {
+    var prefs = await SharedPreferences.getInstance();
+    await prefs.setString('data', jsonEncode(tasks));
+  }
+
+  void toggle(int index) async {
+    setState(() {
+      tasks[index][1] = !tasks[index][1];
+    });
+    await updateStorage();
+  }
+
+  void updateOrder(int oldIndex, int newIndex) async {
     setState(() {
       if (oldIndex < newIndex) {
         newIndex--;
       }
-
       var task = tasks.removeAt(oldIndex);
-
       tasks.insert(newIndex, task);
     });
+    await updateStorage();
   }
 
   void addTask() async {
-    _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-    var prefs = await SharedPreferences.getInstance();
-
     setState(() {
       if (_addController.text != '') {
         tasks.add([_addController.text, false]);
@@ -67,15 +70,24 @@ class _MyHomePageState extends State<MyHomePage> {
         _addController.clear();
       }
     });
+    await updateStorage();
+    if (_scrollController.offset ==
+        _scrollController.position.minScrollExtent && tasks.length > 4) {
+      _scrollController
+          .jumpTo(_scrollController.position.maxScrollExtent + 150);
+    } else {
+      _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+    }
   }
 
-  void deleteTask(int index) {
+  void deleteTask(int index) async {
     setState(() {
       tasks.removeAt(index);
     });
+    await updateStorage();
   }
 
-  void editTask(int index) {
+  void editTask(int index) async {
     setState(() {
       if (_editController.text != '') {
         tasks[index][0] = _editController.text;
@@ -85,9 +97,10 @@ class _MyHomePageState extends State<MyHomePage> {
     _editController.clear();
     //exit dialog
     Navigator.of(context).pop();
+    await updateStorage();
   }
 
-  void popup(int index) {
+  void editPopup(int index) {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -157,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     key: ValueKey(i),
                     onToggle: (value) => toggle(i),
                     deleteFunction: (contex) => deleteTask(i),
-                    popupEvent: () => popup(i),
+                    editPopupEvent: () => editPopup(i),
                     // updateFunc: (context) => editTask(i),
                   ),
               ],

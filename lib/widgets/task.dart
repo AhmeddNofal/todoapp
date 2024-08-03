@@ -8,19 +8,26 @@ class Task extends StatefulWidget {
       required this.completed,
       this.onToggle,
       this.deleteFunction,
-      required this.popupEvent});
+      required this.editPopupEvent});
 
   final String taskText;
   final bool completed;
   final void Function(bool?)? onToggle;
   final Function(BuildContext)? deleteFunction;
-  final void Function()? popupEvent;
+  final void Function() editPopupEvent;
 
   @override
   State<Task> createState() => _TaskState();
 }
 
 class _TaskState extends State<Task> {
+  List<String> list = <String>['Edit', 'Set Reminder'];
+  void openDialog(String choice) {
+    if (choice == 'Edit') {
+      widget.editPopupEvent();
+    } else if (choice == 'Set Reminder') {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -72,11 +79,30 @@ class _TaskState extends State<Task> {
                           decorationThickness: 2.5),
                     ),
                   ),
-                  IconButton(
-                    onPressed: widget.popupEvent,
-                    icon: const Icon(Icons.edit),
-                    color: Colors.white,
-                  )
+                  // IconButton(
+                  //   onPressed: widget.popupEvent,
+                  //   icon: const Icon(Icons.edit),
+                  //   color: Colors.white,
+                  // )
+                  PopupMenuButton(
+                      iconColor: Colors.white,
+                      onSelected: openDialog,
+                      itemBuilder: (BuildContext context) {
+                        return list.map((String choice) {
+                          return PopupMenuItem<String>(
+                            value: choice,
+                            child: Text(choice),
+                          );
+                        }).toList();
+                      })
+                  // DropdownButton(
+                  //     items: list.map<DropdownMenuItem<String>>((String value) {
+                  //       return DropdownMenuItem<String>(
+                  //         value: value,
+                  //         child: Text(value),
+                  //       );
+                  //     }).toList(),
+                  //     onChanged: (value) {})
                 ],
               )),
         ),
