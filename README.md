@@ -105,7 +105,7 @@ Used to create the delete slidable button.
 
 ## Improvments
 
-Some improvments which I would have love to add are
+Some improvments which I would love to add are
 
 ### Canceling or rescheduling reminders
 
