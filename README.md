@@ -44,6 +44,10 @@ the task once pressed.
 
 ![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr8.png?raw=true)
 
+### Reordering a Task
+
+To reorder a task long press on the task that you wish to reorder until it becomes dragable then drag it to its new place on the list
+
 ### Setting Reminders
 
 Setting reminders is crucial when it comes to task management due to the forgetful nature of humans it also makes the 
