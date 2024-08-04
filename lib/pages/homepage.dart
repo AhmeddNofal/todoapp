@@ -109,17 +109,21 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context) => AlertDialog(
               title: const Text('Edit Task'),
               content: TextField(
+                cursorColor: Colors.teal,
                 autofocus: true,
                 controller: _editController,
                 onSubmitted: (value) => editTask(index),
                 decoration: const InputDecoration(
                   hintText: 'Enter New Task',
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.teal)
+                  )
                 ),
               ),
               actions: [
                 TextButton(
                     onPressed: () => editTask(index),
-                    child: const Text('SUBMIT'))
+                    child: const Text('SUBMIT',style: TextStyle(color: Colors.teal),))
               ],
             ));
   }
@@ -130,7 +134,31 @@ class _MyHomePageState extends State<MyHomePage> {
     final TimeOfDay? time = await showTimePicker(
         context: context,
         initialTime: scheduledTime,
-        initialEntryMode: TimePickerEntryMode.dial);
+        initialEntryMode: TimePickerEntryMode.dial,
+         builder: (context, child) {
+                return Theme(
+                  data: ThemeData.light().copyWith(
+                    colorScheme: const ColorScheme.light(
+                      // change the border color
+                      primary: Color.fromRGBO(38, 120, 113, 1),
+                      // change the text color
+                      onSurface: Color.fromRGBO(38, 120, 113, 1),
+                    ),
+                    // button colors 
+                    buttonTheme: const ButtonThemeData(
+                      colorScheme: ColorScheme.light(
+                        primary: Color.fromRGBO(38, 120, 113, 1),
+                      ),
+                    ),
+                    timePickerTheme: TimePickerTheme.of(context).copyWith(
+                        dayPeriodColor: const Color.fromRGBO(50, 153, 144, 1),
+                    )
+                  ),
+                  
+                  child: child!,
+                );
+              }
+        );
     if (time != null) {
       setState(() {
         scheduledTime = time;
@@ -151,7 +179,8 @@ class _MyHomePageState extends State<MyHomePage> {
             schedule: NotificationCalendar.fromDate(date: tmp));
         Fluttertoast.showToast(msg: "Reminder has been set", fontSize: 16.0);
       } else {
-        Fluttertoast.showToast(msg: "Please set reminder in the future", fontSize: 16.0);
+        Fluttertoast.showToast(
+            msg: "Please set reminder in the future", fontSize: 16.0);
       }
     }
   }
@@ -159,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[50],
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("My List"),
         centerTitle: true,
@@ -170,8 +199,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: <Color>[
-                  Color.fromRGBO(218, 34, 255, 1),
-                  Color.fromRGBO(151, 51, 238, 1)
+                  Color.fromRGBO(19, 106, 138, 1),
+                  Color.fromRGBO(38, 120, 113, 1)
                 ]),
           ),
         ),
@@ -180,7 +209,6 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Expanded(
             child: ReorderableListView(
-              // shrinkWrap: true,
               scrollController: _scrollController,
               proxyDecorator: (child, index, animation) {
                 return AnimatedBuilder(
@@ -217,7 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       floatingActionButton: Container(
-        color: Colors.deepPurple[50],
+        color: Colors.white,
         child: Row(
           children: [
             const SizedBox(
@@ -233,16 +261,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   hintText: 'Add a new todo items',
                   hintStyle: TextStyle(color: Colors.grey[600]),
                   filled: true,
-                  fillColor: const Color.fromARGB(27, 218, 34, 255),
+                  fillColor: const Color.fromRGBO(38, 120, 113, 0.075),
                   enabledBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
-                      color: Color.fromRGBO(168, 19, 198, 0.329),
+                      color: Color.fromRGBO(38, 120, 113, 1),
                     ),
                     borderRadius: BorderRadius.circular(15),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: const BorderSide(
-                      color: Color.fromRGBO(168, 19, 198, 0.329),
+                      color: Color.fromRGBO(38, 120, 113, 1),
                     ),
                     borderRadius: BorderRadius.circular(15),
                   ),
@@ -251,7 +279,7 @@ class _MyHomePageState extends State<MyHomePage> {
             )),
             FloatingActionButton(
               onPressed: addTask,
-              backgroundColor: const Color.fromRGBO(218, 34, 255, 0.753),
+              backgroundColor: const Color.fromRGBO(38, 120, 113, 1),
               foregroundColor: Colors.white,
               child: const Icon(Icons.add),
             ),

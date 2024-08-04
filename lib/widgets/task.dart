@@ -57,8 +57,8 @@ class _TaskState extends State<Task> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: <Color>[
-                      Color.fromRGBO(218, 34, 255, 1),
-                      Color.fromRGBO(151, 51, 238, 1)
+                      Color.fromRGBO(19, 106, 138, 1),
+                      Color.fromRGBO(38, 120, 113, 1)
                     ]),
                 borderRadius: BorderRadius.circular(15),
               ),
@@ -84,11 +84,7 @@ class _TaskState extends State<Task> {
                           decorationThickness: 2.5),
                     ),
                   ),
-                  // IconButton(
-                  //   onPressed: widget.popupEvent,
-                  //   icon: const Icon(Icons.edit),
-                  //   color: Colors.white,
-                  // )
+             
                   PopupMenuButton(
                       iconColor: Colors.white,
                       onSelected: openDialog,
@@ -100,14 +96,7 @@ class _TaskState extends State<Task> {
                           );
                         }).toList();
                       })
-                  // DropdownButton(
-                  //     items: list.map<DropdownMenuItem<String>>((String value) {
-                  //       return DropdownMenuItem<String>(
-                  //         value: value,
-                  //         child: Text(value),
-                  //       );
-                  //     }).toList(),
-                  //     onChanged: (value) {})
+              
                 ],
               )),
         ),
