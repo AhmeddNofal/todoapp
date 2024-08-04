@@ -18,6 +18,13 @@ Once you open the app you should see an empty page with only a text field and a 
 
 ### Adding a Task
 
+In order to add a task simply write the task in the text field and press the add button or enter on your keyboard
+and the task should be added.
+
+![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr2.png?raw=true)
+![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr3.png?raw=true)
+
+
 
 
 A few resources to get you started if this is your first Flutter project:
