@@ -46,8 +46,9 @@ the task once pressed.
 
 ### Setting Reminders
 
-To set a reminder press the options button on the right of the task then press on "edit" which
-will open a time picker for you to choose the time you want to be reminded at.
+Setting reminders is crucial when it comes to task management due to the forgetful nature of humans it also makes the 
+app more helpful to people who want to be more organized. To set a reminder press the options button on the right of the task
+then press on "edit" which will open a time picker for you to choose the time you want to be reminded at.
 
 ![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr5.png?raw=true)
 ![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr7.png?raw=true)
@@ -101,3 +102,27 @@ Used to send toasts.
 #### flutter_slidable 
 
 Used to create the delete slidable button.
+
+## Improvments
+
+Some improvments which I would have love to add are
+
+### Canceling or rescheduling reminders
+
+Currently the app doesn't let you cancel nor reschedule a reminder once it has been set, adding this will make the app much more flexible and robust.
+
+### Adding multiple lists
+
+The app makes only one list at the moment, making the app create multiple todo lists will make much more practical.
+
+## Additional Features
+
+Some additional that I might implement in the future are
+
+### Authentication
+
+Implementing authentication using firebase would make the app safer and more private.
+
+### Cloud Backup
+
+Coupled with authentication, making an offline database that automatically syncs the data to the cloud using firebase would take the app to a whole other level.
