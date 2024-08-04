@@ -24,14 +24,23 @@ and the task should be added.
 ![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr2.png?raw=true)
 ![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr3.png?raw=true)
 
+once you finish your task you can check it off by pressing on the checkbox.
+
+![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr4.png?raw=true)
 
 
+### Editing a Task
 
-A few resources to get you started if this is your first Flutter project:
+To edit a task press on the options button on the right of the task then press on "edit" which
+will open a dialog box from where you can rewrite your task.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr5.png?raw=true)
+![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr6.png?raw=true)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Setting Reminders
+
+To set a reminder press the options button on the right of the task then press on "edit" which
+will open a time picker for you to choose the time you want to be reminded at.
+
+![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr5.png?raw=true)
+![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr7.png?raw=true)
