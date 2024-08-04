@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo/widgets/task.dart';
 
@@ -72,7 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
     await updateStorage();
     if (_scrollController.offset ==
-        _scrollController.position.minScrollExtent && tasks.length > 4) {
+            _scrollController.position.minScrollExtent &&
+        tasks.length > 4) {
       _scrollController
           .jumpTo(_scrollController.position.maxScrollExtent + 150);
     } else {
@@ -119,6 +122,38 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const Text('SUBMIT'))
               ],
             ));
+  }
+
+  void reminderPopup(int index) async {
+    TimeOfDay scheduledTime = TimeOfDay.now();
+
+    final TimeOfDay? time = await showTimePicker(
+        context: context,
+        initialTime: scheduledTime,
+        initialEntryMode: TimePickerEntryMode.dial);
+    if (time != null) {
+      setState(() {
+        scheduledTime = time;
+      });
+      //converting to DateTime format
+      var tmp = DateTime.now();
+      tmp = DateTime(tmp.year, tmp.month, tmp.day, scheduledTime.hour,
+          scheduledTime.minute);
+      if (tmp.isAfter(DateTime.now())) {
+        var text = tasks[index][0];
+        AwesomeNotifications().createNotification(
+            content: NotificationContent(
+              id: 1,
+              channelKey: 'reminders',
+              title: 'Task Reminder',
+              body: '$text',
+            ),
+            schedule: NotificationCalendar.fromDate(date: tmp));
+        Fluttertoast.showToast(msg: "Reminder has been set", fontSize: 16.0);
+      } else {
+        Fluttertoast.showToast(msg: "Please set reminder in the future", fontSize: 16.0);
+      }
+    }
   }
 
   @override
@@ -171,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onToggle: (value) => toggle(i),
                     deleteFunction: (contex) => deleteTask(i),
                     editPopupEvent: () => editPopup(i),
-                    // updateFunc: (context) => editTask(i),
+                    reminderPopupEvent: () => reminderPopup(i),
                   ),
               ],
             ),

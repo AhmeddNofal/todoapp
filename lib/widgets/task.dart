@@ -8,13 +8,15 @@ class Task extends StatefulWidget {
       required this.completed,
       this.onToggle,
       this.deleteFunction,
-      required this.editPopupEvent});
+      required this.editPopupEvent,
+      required this.reminderPopupEvent});
 
   final String taskText;
   final bool completed;
   final void Function(bool?)? onToggle;
   final Function(BuildContext)? deleteFunction;
   final void Function() editPopupEvent;
+  final void Function() reminderPopupEvent;
 
   @override
   State<Task> createState() => _TaskState();
@@ -22,10 +24,13 @@ class Task extends StatefulWidget {
 
 class _TaskState extends State<Task> {
   List<String> list = <String>['Edit', 'Set Reminder'];
+
   void openDialog(String choice) {
     if (choice == 'Edit') {
       widget.editPopupEvent();
-    } else if (choice == 'Set Reminder') {}
+    } else if (choice == 'Set Reminder') {
+      widget.reminderPopupEvent();
+    }
   }
 
   @override
