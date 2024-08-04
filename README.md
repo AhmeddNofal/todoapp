@@ -1,8 +1,8 @@
-# todo
+# Task Managing app
 
-A new Flutter project.
+A simple flutter application made with flutter.
 
-## Getting Started
+## Usage
 
 This project is a starting point for a Flutter application.
 
