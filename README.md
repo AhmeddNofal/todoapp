@@ -37,6 +37,13 @@ will open a dialog box from where you can rewrite your task.
 ![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr5.png?raw=true)
 ![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr6.png?raw=true)
 
+### Removing a Task
+
+To delete a task simply slide the task from right ot left to reveal the delete button which deletes 
+the task once pressed.
+
+![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr8.png?raw=true)
+
 ### Setting Reminders
 
 To set a reminder press the options button on the right of the task then press on "edit" which
@@ -44,3 +51,53 @@ will open a time picker for you to choose the time you want to be reminded at.
 
 ![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr5.png?raw=true)
 ![alt text](https://github.com/AhmeddNofal/todoapp/blob/main/screenshots/scr7.png?raw=true)
+
+## Documentaion
+
+This section covers how the app is built.
+
+### Architecture
+
+The project consists of three dart files found in the lib folder which are
+ - pages/homepage.dart
+ - widgets/task.dart
+ - main.dart
+
+#### main.dart
+
+This is where the main function that runs our app and initializes dependencies resides.
+
+#### hompage.dart
+
+As the name implies this is the homepage of the application (only page for the time being)
+it includes the state "tasks" where we keep track of the tasks as a 2d array and the fuctions for the 
+CRUD operations such as addTask().
+
+#### task.dart
+
+This file contains the Task widget which is rendered by the Homepage with the tasks in its state by looping through the
+tasks list and passing and returning a Task widget with the data of each task.
+
+### Storage
+
+The app uses shared preferences  to store the data locally.
+
+### Dependencies
+
+The packages used in this project are
+
+#### Awesome Notifications
+
+Used to send notifications.
+
+#### Shared preferences plugin
+
+Used to store data.
+
+#### fluttertoast
+
+Used to send toasts.
+
+#### flutter_slidable 
+
+Used to create the delete slidable button.
