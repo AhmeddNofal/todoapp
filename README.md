@@ -1,6 +1,6 @@
 # Task Managing app
 
-A simple flutter application made with flutter.
+A simple task managment application made with flutter.
 
 ## Overview
 
@@ -130,3 +130,7 @@ Implementing authentication using firebase would make the app safer and more pri
 ### Cloud Backup
 
 Coupled with authentication, making an offline database that automatically syncs the data to the cloud using firebase would take the app to a whole other level.
+
+## Contributions
+
+Any enhancements, features or fixes are welcome as long as the code acutally works and doesn't break the application, let's see how far this can goo :)
