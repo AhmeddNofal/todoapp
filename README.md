@@ -6,6 +6,32 @@ A simple task managment application made with flutter.
 
 This is app is a simple todo list that allows you to add, edit, remove, check and set reminders for tasks.
 
+## Installation guide
+
+Before installing, ensure you have the following installed:
+
+Flutter SDK: Installation Guide
+Git: Download Git
+Android Studio or VS Code (Recommended for development)
+
+1. Clone the repository
+Use the following command to clone the repository on your machine:
+git clone https://github.com/AhmeddNofal/todoapp.git
+
+2. Navigate to the project folder
+Use the following command to navigate directories:
+cd todoapp
+
+3. Install dependencies
+Use the following command to install the flutter dependencies:
+flutter pub get
+
+4. Run the app
+Use the following command to launch the application:
+flutter run
+
+This command should open the user interface and allow you to start making tasks.
+
 ## Usage
 
 This section is usage guide on how the app should be used.
