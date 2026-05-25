@@ -133,9 +133,9 @@ Used to send toasts.
 
 Used to create the delete slidable button.
 
-## Improvments
+## Improvements
 
-Some improvments which I would love to add are
+Some improvements which I would love to add are
 
 ### Canceling or rescheduling reminders
 
